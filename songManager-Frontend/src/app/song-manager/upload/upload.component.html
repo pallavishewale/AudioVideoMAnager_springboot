@@ -1,0 +1,76 @@
+<div class="upload-container">
+
+  <div class="upload-template">
+    <div class="image-container">
+      <div>
+      <label for="songImage">Song Image</label>
+      <p-fileUpload name="songImage" #fileUpload (onSelect)="onImageSelected($event)" label="Browse" chooseLabel="Browse"
+        mode="basic"></p-fileUpload>
+        <p-button (click)="reuploadSongImage()"  size="small" severity="danger" *ngIf="songImageSrc">Reupload</p-button>
+        </div>
+        <img class="song-img" [src]="songImageSrc" *ngIf="songImageSrc">
+    </div>
+
+
+    <div class="upload-form">
+      <form [formGroup]="uploadForm" (ngSubmit)="onSubmit(uploadForm.value)">
+
+        <div class="form-row">
+          <div class="form-group col">
+
+            <input pInputText formControlName="title" id="title" placeholder="Title">
+          </div>
+          <div class="form-group col">
+
+            <input pInputText formControlName="artist" id="artist" placeholder="Artist">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col">
+
+            <input pInputText formControlName="genre" id="genre" placeholder="Genre">
+          </div>
+          <div class="form-group col">
+
+            <input pInputText formControlName="duration" id="duration" placeholder="Duration">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col">
+
+            <input pInputText formControlName="releaseYear" id="releaseYear" placeholder="Release Year">
+          </div>
+          <div class="form-group col">
+
+            <input pInputText formControlName="language" id="language" placeholder="Language">
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label>Type</label>
+          <div class="radio-button-group">
+            <p-radioButton name="type" value="audio" formControlName="type" (onClick)="setFileType($event)"
+              label="Audio"></p-radioButton>
+            <p-radioButton name="type" value="video" formControlName="type" (onClick)="setFileType($event)"
+              label="Video"></p-radioButton>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="file">File</label>
+          <p-fileUpload name="file" (onSelect)="onFileSelected($event)"  label="Browse" chooseLabel="Browse" mode="basic"
+            [accept]="fileAccept"></p-fileUpload>
+        </div>
+
+        <div class="form-group"  >
+          <p-button type="submit" label="Upload" severity="secondary" class="p-button-primary"></p-button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

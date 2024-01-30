@@ -1,0 +1,41 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="login-container">
+  <form  [formGroup]="loginForm" class="login-form" (ngSubmit)="login(loginForm.value)">
+    <img src="assets/login-logo.png" alt="Logo" class="logo">
+    <span *ngIf="errorMsg">{{errorMsg}}</span>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        <mat-icon>person</mat-icon>
+        Username
+      </mat-label>
+      <input matInput formControlName="username" name="username" placeholder="Username">
+      <mat-error *ngIf="loginForm?.get('username')?.invalid && loginForm?.get('username')?.touched">
+        UserName is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>
+        <mat-icon>lock</mat-icon>
+        Password
+      </mat-label>
+      <input matInput formControlName="password" name="password" type="password" placeholder="Password">
+      <mat-error *ngIf="loginForm?.get('password')?.invalid && loginForm?.get('password')?.touched">
+        Password is required.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" >
+      <mat-icon>login</mat-icon>
+      Login
+    </button>
+    <div class="register-link">
+      <small>Don't have an account? </small>>
+      <a mat-button routerLink="/register">
+        <mat-icon>person_add</mat-icon>
+        Register here
+      </a>
+    </div>
+  </form>
+</div>

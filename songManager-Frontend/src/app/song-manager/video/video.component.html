@@ -1,0 +1,60 @@
+<div class="card-container">
+  <div *ngFor="let song of songsData">
+    <p-card [header]="song.title" [subheader]="song.genre + ' * ' + song.year + ' * ' + song.duration">
+      <ng-template pTemplate="header">
+        <img alt="Card" class="song-image"  [src]="'data:image/png;base64,' + song.image" />
+      </ng-template>
+      <p class="song-details">
+        {{ song.language }}  : {{ song.type }}
+      </p>
+      <ng-template pTemplate="footer">
+        <p-button [label]="'Play ' + type" icon="pi pi-play" severity="secondary" (click)="playMusic(song)"></p-button>
+      </ng-template>
+    </p-card>
+
+   
+  
+  </div>
+  </div>
+ 
+
+<p-dialog header="Turn Up the Volume of Your Heart." [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+  <!-- for audio -->
+  <div *ngIf="song.type == 'audio'"  >
+    <div class="audio-card" >
+      <div  class="audio-image" style="background-image: url('data:image/png;base64,{{ song.image }}');">
+        <audio #audioPlayer  controls >
+          <source [src]="'data:audio/mp3;base64,' + songFile" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      <!-- <img class="audio-image" [src]="'data:image/png;base64,' + song.image" alt="Album Cover"> -->
+      <div class="audio-details">
+        <h2>{{ song.title }}</h2>
+        <p>{{ song.genre }} - {{ song.year }} || {{ song.artist }} - 
+        {{ song.genre }} - {{ song.year }}</p>
+        <p>Duration: {{ song.duration }} - Language: {{ song.language }}</p>
+      </div>
+    </div>
+  </div>
+
+<!--  for video  -->
+  <div *ngIf="song.type == 'video'">
+    <div class="video-card">
+      <video #videoPlayer controls width="100%" height="auto" >
+        <source [src]="'data:audio/mp3;base64,' + songFile" type="video/mp4">
+        Your browser does not support the video element.
+      </video>
+      <div class="video-details">
+        <h2>{{ song.title }}</h2>
+        <p>{{ song.genre }} - {{ song.year }} || {{ song.artist }} - 
+        {{ song.genre }} </p>
+        <p>Duration: {{ song.duration }} - Language: {{ song.language }}</p>
+       
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+
+  

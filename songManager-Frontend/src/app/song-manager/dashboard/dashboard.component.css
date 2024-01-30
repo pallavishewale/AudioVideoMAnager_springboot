@@ -1,0 +1,65 @@
+/* Styles for the sidebar */
+.dashboard-container {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  background-color: #333;
+  color: #fff;
+  width: 20%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* Styles for the top app bar */
+.app-toolbar {
+  background-color: #222;
+  color: #fff;
+}
+
+.container{
+    overflow: auto;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* Styles for the navigation links in the sidebar */
+.nav-content {
+  margin-top: 20px;
+}
+
+.nav-content a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+}
+
+.nav-content a:hover {
+  background-color: #444;
+}
+
+.mat-icon {
+  margin-right: 10px;
+}
+
+.active-link {
+  background-color: #555;
+}
+.active-link {
+  background-color: #007bff; /* Set the desired background color for the active link */
+  color: #fff; /* Set the text color for the active link */
+}
